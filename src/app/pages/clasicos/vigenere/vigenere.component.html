@@ -1,0 +1,113 @@
+  <div class="row">
+
+    <div class="col-md-6">
+      <ngx-cifrar-form 
+        [title]="'Cifrar con Vigenere'" 
+        [textoCifrado]="textoCifradoForm1" 
+        [tipoClave]="tipoClave"
+        (cifrarEvent)="cifrar($event)"
+        (clearEvent)="clearForm(1)" >
+      </ngx-cifrar-form>
+    </div>
+    
+    <div class="col-md-6">
+      <ngx-descifrar-form 
+        [title]="'Descifrar con Vigenere'" 
+        [textoClaro]="textoClaroForm2" 
+        [tipoClave]="tipoClave"
+        (descifrarEvent)="descifrar($event)"
+        (clearEvent)="clearForm(2)" >
+      </ngx-descifrar-form>  
+    </div>
+
+  </div>
+  <!--
+  <div class="row">
+
+    <div class="col-md-6">
+      <ngx-kasiski-form
+        [title]="'Test de Kasiski - Frecuencias'" 
+        [kasiskiFrecuencies]="kasiskiFrecuencies" 
+        (kasiskiEvent)="kasiski($event)"
+        (clearEvent)="clearForm(3)" >
+      </ngx-kasiski-form>  
+    </div>
+
+    <div class="col-md-6">
+      <ngx-kasiski-form2
+        [title]="'Test de Kasiski - Análisis'" 
+        [resultado]="resultadoKasiski" 
+        (kasiskiEvent)="kasiskiAnalisis($event)"
+        (clearEvent)="clearForm(3)" >
+      </ngx-kasiski-form2>  
+    </div>
+
+  </div>
+  -->
+
+  <div class="row">
+
+    <div class="col-md-6">
+      <nb-card>
+        <nb-card-header>Índices de Coincidencia</nb-card-header>
+        <nb-card-body>
+          <form (ngSubmit)="mostrarIndicesCoincidencia(model.textoCifrado, model.maxM)">
+            <div class="form-group">
+              <label for="textoCifrado" class="label">Texto Cifrado</label>
+              <textarea type="text" [(ngModel)]="model.textoCifrado" name="textoCifrado" nbInput fullWidth id="textoCifrado" placeholder="Inserte el texto cifrado"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="maxM" class="label">Máximo valor de m (longitud de clave)</label>
+              <input class="block" type="number" [(ngModel)]="model.maxM" name="maxM" nbInput id="maxM" min="1">
+            </div>
+
+            <div class="buttons">
+              <button type="submit" nbButton status="primary">Mostrar Índices</button>
+              <button (click)="clearForm2(5, $event)" nbButton  status="warning">Limpiar</button>
+            </div>
+            
+          </form>
+          
+          <div *ngIf="indicesCoincidencia.length > 0" class="table-container">
+            <ngx-tabla [data]="indicesCoincidencia" [columns]="columnsIndices" ></ngx-tabla>
+          </div>
+          
+        </nb-card-body>
+      </nb-card>
+
+    </div>
+
+    <div class="col-md-6">
+      <nb-card>
+        <nb-card-header>Analizar con Vigenere</nb-card-header>
+        <nb-card-body>
+          <form (ngSubmit)="encontrarClave(model2.textoCifrado, model2.longitudClave)">
+            <div class="form-group">
+              <label for="textoCifrado" class="label">Texto Cifrado</label>
+              <textarea type="text" [(ngModel)]="model2.textoCifrado" name="textoCifrado" nbInput fullWidth id="textoCifrado" placeholder="Inserte el texto cifrado"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="longitudClave" class="label">Longitud de clave (m)</label>
+              <input class="block" type="number" [(ngModel)]="model2.longitudClave" name="longitudClave" nbInput id="longitudClave" min="1">
+            </div>
+
+            <div class="buttons">
+              <button type="submit" nbButton status="primary">Encontrar Clave</button>
+              <button (click)="clearForm2(6, $event)" nbButton  status="warning">Limpiar</button>
+            </div>
+            
+          </form>
+          
+          <div class="result-text">
+            <p>Clave: <span class="result">{{model2.clave}}</span></p>
+          </div>
+
+        </nb-card-body>
+      </nb-card>
+
+    </div>
+
+  </div>
+    

@@ -1,0 +1,157 @@
+<div class="row">
+
+
+  <div class="col-md-2">
+    <nb-card>
+      <nb-card-header>Punto Inicial</nb-card-header>
+      <nb-card-body>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="coordX" class="label">X</label>
+              <input class="fix-width" type="number" [(ngModel)]="model.coordX" (ngModelChange)="dibujarGrafo()"
+                name="coordX" nbInput id="coordX">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="coordY" class="label">Y</label>
+              <input class="fix-width" type="number" [(ngModel)]="model.coordY" (ngModelChange)="dibujarGrafo()"
+                name="coordY" nbInput id="coordY">
+            </div>
+          </div>
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+    <!--
+    <nb-card>
+      <nb-card-header>Coordenadas</nb-card-header>
+      <nb-card-body>      
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group center-vertically">
+              <label for="izquierda" class="label">Izquierda</label>
+              <input class="fix-width" type="number" name="izquierda" nbInput id="izquierda">
+            </div>
+          </div>  
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="arriba" class="label">Arriba</label>
+              <input class="fix-width" type="number" name="arriba" nbInput id="arriba">
+            </div>
+            <div class="form-group">
+              <label for="abajo" class="label">Abajo</label>
+              <input class="fix-width" type="number" name="abajo" nbInput id="abajo">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group center-vertically">
+              <label for="derecha" class="label">Derecha</label>
+              <input class="fix-width" type="number" name="derecha" nbInput id="derecha">
+            </div>
+          </div>
+        </div>
+      
+      </nb-card-body>
+    </nb-card> 
+    -->
+    <nb-card>
+      <nb-card-header>Permutación</nb-card-header>
+      <nb-card-body>
+        <div class="form-group">
+          <label for="permutacion" class="label">Permutación</label>
+          <input style="font-size: 0.8500rem" type="text" [(ngModel)]="model.permutacion" name="permutacion" nbInput
+            fullWidth id="permutacion" placeholder="permutacion">
+        </div>
+        <div class="form-group">
+          <button (click)="generarPermutacion()" nbButton class="fix-width" status="primary">Generar
+            Permutación</button>
+        </div>
+
+        <div class="form-group">
+          <button (click)="dibujarPermutacion()" nbButton class="fix-width" status="warning">Aplicar
+            Permutación</button>
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card>
+      <nb-card-header>Tipo de Grafo</nb-card-header>
+      <nb-card-body>
+        <div class="form-group">
+          <nb-radio-group [(value)]="model.tipoGrafo">
+            <nb-radio [value]="1">
+              Naturales
+            </nb-radio>
+            <nb-radio [value]="2">
+              Triangulares
+            </nb-radio>
+          </nb-radio-group>
+        </div>
+
+        <div class="form-group">
+          <button (click)="dibujarGrafo()" nbButton class="fix-width" status="primary">Dibujar Grafo</button>
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+
+  </div>
+
+  <div class="col-md-5">
+
+    <canvas #canvas1 id="canvas1" width="640vw" height="700vh" class="canvas"></canvas>
+
+
+    <nb-card>
+      <nb-card-header>Cifrar con Gamma Pentagonal</nb-card-header>
+      <nb-card-body>
+
+        <form (ngSubmit)="cifrar()">
+
+          <div class="form-group">
+            <label for="textoClaro" class="label">Texto Claro</label>
+            <textarea class="large-input" type="text" [(ngModel)]="model.textoClaro" name="textoClaro" nbInput fullWidth
+              id="textoClaro" placeholder="Inserte el texto a cifrar"></textarea>
+          </div>
+          <div class="buttons">
+            <button type="submit" nbButton status="primary">Cifrar</button>
+            <button (click)="clearForm1($event)" nbButton status="warning">Limpiar</button>
+          </div>
+
+        </form>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-md-5">
+
+    <canvas #canvas2 id="canvas2" width="640vw" height="700vh" class="canvas"></canvas>
+
+
+    <nb-card>
+      <nb-card-header>Descifrar con Gamma Pentagonal</nb-card-header>
+      <nb-card-body>
+
+        <form (ngSubmit)="descifrar()">
+
+          <div class="form-group">
+            <label for="textoCifrado" class="label">Texto Cifrado</label>
+            <textarea class="large-input" type="text" [(ngModel)]="model.textoCifrado" name="textoCifrado" nbInput
+              fullWidth id="textoCifrado" placeholder="Inserte la cadena de parejas de enteros"></textarea>
+          </div>
+          <div class="buttons">
+            <button type="submit" nbButton status="primary">Descifrar</button>
+            <button (click)="clearForm2($event)" nbButton status="warning">Limpiar</button>
+          </div>
+
+        </form>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+</div>

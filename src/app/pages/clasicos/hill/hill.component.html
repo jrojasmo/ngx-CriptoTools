@@ -1,0 +1,166 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>Cifrar con Hill (Ismail)</nb-card-header>
+      <nb-card-body>
+
+        <div class="row">
+        
+          <div class="col-md-6" style="display: flex;">
+              <div class="load-image-button-container">
+                <label for="file-selector" class="custom-file-upload">Cargar Imagen Clara</label>
+                <input #fileSelector (change)="fileSelected($event)" type="file" id="file-selector">
+              </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="clave1" class="label">Clave de cifrado 1</label>
+                <input class="block" type="number" [(ngModel)]="model.clave[0]" name="clave1" nbInput id="clave1" min="1">
+              </div>
+        
+              <div class="form-group col-md-6">
+                <label for="clave2" class="label">Clave de cifrado 2</label>
+                <input class="block" type="number" [(ngModel)]="model.clave[1]" name="clave2" nbInput id="clave2" min="1">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="clave3" class="label">Clave de cifrado 3</label>
+                <input class="block" type="number" [(ngModel)]="model.clave[2]" name="clave3" nbInput id="clave3" min="1">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="clave4" class="label">Clave de cifrado 4</label>
+                <input class="block" type="number" [(ngModel)]="model.clave[3]" name="clave4" nbInput id="clave4" min="1">
+              </div>
+            </div>
+            <form (ngSubmit)="cifrar()">
+              <div class="buttons">
+                <button type="submit" nbButton status="primary">Cifrar</button>
+                <a #downloadAnchor1 class="custom-file-upload" download="imagen-cifrada" href="" title="ImageName">Descargar Imagen</a>
+                <button (click)="clearForm($event)" nbButton  status="warning">Limpiar</button>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+        <div class="row" style="margin-top: 1rem;">
+
+          <div class="col-md-6" style="display: flex; justify-content: center;">
+            <img #imagenClara src="" name="imagenClara" id="imagenClara" >
+          </div>
+          
+          <div class="form-group col-md-6" style="display: flex; justify-content: center; margin: 0;">
+            <canvas #canvas1 id="canvas1"></canvas>
+          </div>
+
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+    
+</div>
+  
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>Descifrar con Hill (Ismail)</nb-card-header>
+      <nb-card-body>
+
+        <div class="row">
+        
+          <div class="col-md-6" style="display: flex;">
+              <div class="load-image-button-container">
+                <label for="file-selector2" class="custom-file-upload">Cargar Imagen Cifrada</label>
+                <input #fileSelector2 (change)="fileSelected2($event)" type="file" id="file-selector2">
+              </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="clave1-2" class="label">Clave de cifrado 1</label>
+                <input class="block" type="number" [(ngModel)]="model2.clave[0]" name="clave1-2" nbInput id="clave1-2" min="1">
+              </div>
+        
+              <div class="form-group col-md-6">
+                <label for="clave2-2" class="label">Clave de cifrado 2</label>
+                <input class="block" type="number" [(ngModel)]="model2.clave[1]" name="clave2-2" nbInput id="clave2-2" min="1">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="clave3-2" class="label">Clave de cifrado 3</label>
+                <input class="block" type="number" [(ngModel)]="model2.clave[2]" name="clave3-2" nbInput id="clave3-2" min="1">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="clave4-2" class="label">Clave de cifrado 4</label>
+                <input class="block" type="number" [(ngModel)]="model2.clave[3]" name="clave4-2" nbInput id="clave4-2" min="1">
+              </div>
+            </div>
+            <form (ngSubmit)="descifrar()">
+              <div class="buttons">
+                <button type="submit" nbButton status="primary">Descifrar</button>
+                <a #downloadAnchor2 class="custom-file-upload" download="imagen-clara" href="" title="ImageName">Descargar Imagen</a>
+                <button (click)="clearForm2($event)" nbButton  status="warning">Limpiar</button>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+        <div class="row" style="margin-top: 1rem;">
+
+          <div class="col-md-6" style="display: flex; justify-content: center;">
+            <img #imagenCifrada src="" name="imagenCifrada" id="imagenCifrada" >
+          </div>
+          
+          <div class="form-group col-md-6" style="display: flex; justify-content: center; margin: 0;">
+            <canvas #canvas2 id="canvas2"></canvas>
+          </div>
+
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>Analizar con Hill</nb-card-header>
+      <nb-card-body>
+        <form (ngSubmit)="encontrarClave(model3.textoClaro, model3.textoCifrado)">
+          <div class="form-group">
+            <label for="textoClaro" class="label">Texto Claro</label>
+            <textarea type="text" [(ngModel)]="model3.textoClaro" name="textoClaro" nbInput fullWidth id="textoClaro" placeholder="Inserte el texto claro"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="textoCifrado" class="label">Texto Cifrado</label>
+            <textarea type="text" [(ngModel)]="model3.textoCifrado" name="textoCifrado" nbInput fullWidth id="textoCifrado" placeholder="Inserte el texto cifrado"></textarea>
+          </div>
+
+          <div class="buttons">
+            <button type="submit" nbButton status="primary">Encontrar Clave</button>
+            <button (click)="clearForm3($event)" nbButton  status="warning">Limpiar</button>
+          </div>
+          
+        </form>
+        
+        <div class="result-text">
+          <p>Clave (2x2): <span class="result">{{model3.clave}}</span></p>
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+
+  </div>
+    
+</div>
+  

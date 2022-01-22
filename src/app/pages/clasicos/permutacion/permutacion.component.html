@@ -1,0 +1,100 @@
+  <div class="row">
+
+
+    <div class="col-md-6">
+      <nb-card>
+        <nb-card-header>Cifrar con Permutación</nb-card-header>
+        <nb-card-body>
+      
+          <form (ngSubmit)="cifrar(model1.textoClaro, model1.claveString)">
+      
+            <div class="form-group">
+              <label for="textoClaro" class="label">Texto Claro</label>
+              <textarea type="text" [(ngModel)]="model1.textoClaro" name="textoClaro" nbInput fullWidth id="textoClaro" placeholder="Inserte el texto a cifrar"></textarea>
+            </div>
+      
+            <div class="form-group">
+              <label for="clave3" class="label">Clave de cifrado</label>
+              <textarea type="text" [(ngModel)]="model1.claveString" name="claveString" nbInput fullWidth id="claveString" placeholder="Ingrese un arreglo numérico, o use el botón GENERAR CLAVE"></textarea>
+            </div>
+      
+            <div class="form-group">
+              <label for="textoCifrado" class="label">Texto Cifrado</label>
+              <textarea type="text" [(ngModel)]="model1.textoCifrado" name="textoCifrado" nbInput fullWidth id="textoCifrado" placeholder="Oprima 'CIFRAR' para ver el texto cifrado"></textarea>
+            </div>
+      
+            <div class="buttons">
+              <button type="submit" nbButton status="primary">Cifrar</button>
+              <button (click)="generarClave($event, model1)" nbButton  status="warning">Generar Clave</button>
+              <button (click)="clearForm($event, model1)" nbButton  status="warning">Limpiar</button>
+            </div>
+            
+          </form>
+      
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+    <div class="col-md-6">
+      <nb-card>
+        <nb-card-header>Descifrar con Permutación</nb-card-header>
+        <nb-card-body>
+      
+          <form (ngSubmit)="descifrar(model2.textoCifrado, model2.claveString)">
+
+            <div class="form-group">
+              <label for="textoCifrado" class="label">Texto Cifrado</label>
+              <textarea type="text" [(ngModel)]="model2.textoCifrado" name="textoCifrado" nbInput fullWidth id="textoCifrado" placeholder="Oprima 'DESCIFRAR' para ver el texto descifrado"></textarea>
+            </div>
+      
+            <div class="form-group">
+              <label for="clave3" class="label">Clave de cifrado</label>
+              <textarea type="text" [(ngModel)]="model2.claveString" name="claveString" nbInput fullWidth id="claveString" placeholder="Ingrese un arreglo numérico, o use el botón GENERAR CLAVE"></textarea>
+            </div>
+      
+            <div class="form-group">
+              <label for="textoClaro" class="label">Texto Claro</label>
+              <textarea type="text" [(ngModel)]="model2.textoClaro" name="textoClaro" nbInput fullWidth id="textoClaro" placeholder="Inserte el texto a descifrar"></textarea>
+            </div>
+      
+            <div class="buttons">
+              <button type="submit" nbButton status="primary">Descifrar</button>
+              <button (click)="generarClave($event, model2)" nbButton  status="warning">Generar Clave</button>
+              <button (click)="clearForm($event, model2)" nbButton  status="warning">Limpiar</button>
+            </div>
+            
+          </form>
+      
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <nb-card>
+        <nb-card-header>Posibles Longitudes de Clave</nb-card-header>
+        <nb-card-body>
+          <form (ngSubmit)="analizar(model3.textoCifrado)">
+            <div class="form-group">
+              <label for="textoCifrado3" class="label">Texto Cifrado</label>
+              <textarea type="text" [(ngModel)]="model3.textoCifrado" name="textoCifrado3" nbInput fullWidth id="textoCifrado3" placeholder="Inserte el texto cifrado y oprima 'MOSTRAR LONGITUDES'"></textarea>
+            </div>
+
+            <div class="buttons">
+              <button type="submit" nbButton status="primary">Mostrar Longitudes</button>
+              <button (click)="clearForm($event, model3)" nbButton  status="warning">Limpiar</button>
+            </div>
+            
+          </form>
+
+          <div *ngIf="longitudesClave" class="resultado">
+            <p>Posibles longitudes de la clave: {{longitudesClave}}</p>
+          </div>
+          
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+  
+  

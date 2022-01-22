@@ -1,0 +1,595 @@
+
+<div class="row">
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header>Cifrar con AES-ECB</nb-card-header>
+      <nb-card-body>
+
+        <div class="row">
+        
+          <div class="col-md-12">
+            
+            <form (ngSubmit)="cifrar('ecb')">
+              <div class="form-group col-md-6" style="padding: 0px;">
+                <label for="lenkey1_ecb" class="label">Tamaño Clave</label>
+                <nb-select [(ngModel)]="model1.lenkey1_ecb" fullWidth id="lenkey1_ecb" name="lenkey1_ecb" selected="256">
+                  <nb-option value="128">128</nb-option>
+                  <nb-option value="192">192</nb-option>
+                  <nb-option value="256">256</nb-option>
+                </nb-select>
+              </div>
+
+              <div class="form-group">
+                <label for="clave1_ecb" class="label">Clave</label>
+                <input type="text" [(ngModel)]="model1.clave1_ecb" name="clave1_ecb" nbInput fullWidth id="clave1_ecb" placeholder="Inserte clave para cifrar">
+              </div>
+
+              <div class="buttons">
+                
+                <label for="file-selector1_ecb" class="custom-file-upload">Cargar Imagen Clara</label>
+                <input #fileSelector1_ecb (change)="fileSelected($event, 'ecb1')" type="file" id="file-selector1_ecb">
+                
+                <button type="submit" nbButton status="primary">Cifrar</button>
+
+                <a #downloadAnchor1_ecb class="custom-file-upload" download="imagen-clara" href="" title="ImageName">Descargar Imagen</a>
+                
+                <button (click)="clearForm($event, 'ecb1')" nbButton  status="warning">Limpiar</button>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+        <div class="row" style="margin-top: 1rem;">
+
+          <div class="form-group col-md-12" style="display: flex; justify-content: center; margin: 0;">
+            <canvas #canvas1_ecb id="canvas1_ecb"></canvas>
+          </div>
+
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header>Descifrar con AES-ECB</nb-card-header>
+      <nb-card-body>
+
+        <div class="row">
+
+          <div class="col-md-12">
+            
+            <form (ngSubmit)="descifrar('ecb')">
+              <div class="form-group col-md-6" style="padding: 0px;">
+                <label for="lenkey2_ecb" class="label">Tamaño Clave</label>
+                <nb-select [(ngModel)]="model1.lenkey2_ecb" fullWidth id="lenkey2_ecb" name="lenkey2_ecb" selected="256">
+                  <nb-option value="128">128</nb-option>
+                  <nb-option value="192">192</nb-option>
+                  <nb-option value="256">256</nb-option>
+                </nb-select>
+              </div>
+
+              <div class="form-group">
+                <label for="clave2_ecb" class="label">Clave</label>
+                <input type="text" [(ngModel)]="model1.clave2_ecb" name="clave2_ecb" nbInput fullWidth id="clave2_ecb" placeholder="Inserte clave para descifrar">
+              </div>
+
+              <div class="buttons">
+                
+                <label for="file-selector2_ecb" class="custom-file-upload">Cargar Imagen Cifrada</label>
+                <input #fileSelector2_ecb (change)="fileSelected($event, 'ecb2')" type="file" id="file-selector2_ecb">
+                
+                <button type="submit" nbButton status="primary">Descifrar</button>
+
+                <a #downloadAnchor2_ecb class="custom-file-upload" download="imagen-cifrada" href="" title="ImageName">Descargar Imagen</a>
+
+                <button (click)="clearForm($event, 'ecb2')" nbButton  status="warning">Limpiar</button>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+        <div class="row" style="margin-top: 1rem;">
+          
+          <div class="form-group col-md-12" style="display: flex; justify-content: center; margin: 0;">
+            <canvas #canvas2_ecb id="canvas2_ecb"></canvas>
+          </div>
+
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+    
+</div>
+
+
+<div class="row">
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header>Cifrar con AES-CBC</nb-card-header>
+      <nb-card-body>
+
+        <div class="row">
+        
+          <div class="col-md-12">
+            
+            <form (ngSubmit)="cifrar('cbc')">
+              <div class="form-group col-md-6" style="padding: 0px;">
+                <label for="lenkey1_cbc" class="label">Tamaño Clave</label>
+                <nb-select [(ngModel)]="model1.lenkey1_cbc" fullWidth id="lenkey1_cbc" name="lenkey1_cbc" selected="256">
+                  <nb-option value="128">128</nb-option>
+                  <nb-option value="192">192</nb-option>
+                  <nb-option value="256">256</nb-option>
+                </nb-select>
+              </div>
+              
+              <div class="form-group">
+                <label for="clave1_cbc" class="label">Clave</label>
+                <input type="text" [(ngModel)]="model1.clave1_cbc" name="clave1_cbc" nbInput fullWidth id="clave1_cbc" placeholder="Inserte clave para cifrar">
+              </div>
+
+              <div class="form-group">
+                <label for="iv1_cbc" class="label">Vector Inicial</label>
+                <input type="text" [(ngModel)]="model1.iv1_cbc" name="iv1_cbc" nbInput fullWidth id="iv1_cbc" placeholder="Inserte texto para usar como vector inicial">
+              </div>
+
+              <div class="buttons">
+                
+                <label for="file-selector1_cbc" class="custom-file-upload">Cargar Imagen Clara</label>
+                <input #fileSelector1_cbc (change)="fileSelected($event, 'cbc1')" type="file" id="file-selector1_cbc">
+                
+                <button type="submit" nbButton status="primary">Cifrar</button>
+
+                <a #downloadAnchor1_cbc class="custom-file-upload" download="imagen-clara" href="" title="ImageName">Descargar Imagen</a>
+                
+                <button (click)="clearForm($event, 'cbc1')" nbButton  status="warning">Limpiar</button>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+        <div class="row" style="margin-top: 1rem;">
+
+          <div class="form-group col-md-12" style="display: flex; justify-content: center; margin: 0;">
+            <canvas #canvas1_cbc id="canvas1_cbc"></canvas>
+          </div>
+
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header>Descifrar con AES-CBC</nb-card-header>
+      <nb-card-body>
+
+        <div class="row">
+
+          <div class="col-md-12">
+            
+            <form (ngSubmit)="descifrar('cbc')">
+              <div class="form-group col-md-6" style="padding: 0px;">
+                <label for="lenkey2_cbc" class="label">Tamaño Clave</label>
+                <nb-select [(ngModel)]="model1.lenkey2_cbc" fullWidth id="lenkey2_cbc" name="lenkey2_cbc" selected="256">
+                  <nb-option value="128">128</nb-option>
+                  <nb-option value="192">192</nb-option>
+                  <nb-option value="256">256</nb-option>
+                </nb-select>
+              </div>
+
+              <div class="form-group">
+                <label for="clave2_cbc" class="label">Clave</label>
+                <input type="text" [(ngModel)]="model1.clave2_cbc" name="clave2_cbc" nbInput fullWidth id="clave2_cbc" placeholder="Inserte clave para descifrar">
+              </div>
+
+              <div class="form-group">
+                <label for="iv2_cbc" class="label">Vector Inicial</label>
+                <input type="text" [(ngModel)]="model1.iv2_cbc" name="iv2_cbc" nbInput fullWidth id="iv2_cbc" placeholder="Inserte texto para usar como vector inicial">
+              </div>
+
+              <div class="buttons">
+                
+                <label for="file-selector2_cbc" class="custom-file-upload">Cargar Imagen Cifrada</label>
+                <input #fileSelector2_cbc (change)="fileSelected($event, 'cbc2')" type="file" id="file-selector2_cbc">
+                
+                <button type="submit" nbButton status="primary">Descifrar</button>
+
+                <a #downloadAnchor2_cbc class="custom-file-upload" download="imagen-cifrada" href="" title="ImageName">Descargar Imagen</a>
+
+                <button (click)="clearForm($event, 'cbc2')" nbButton  status="warning">Limpiar</button>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+        <div class="row" style="margin-top: 1rem;">
+          
+          <div class="form-group col-md-12" style="display: flex; justify-content: center; margin: 0;">
+            <canvas #canvas2_cbc id="canvas2_cbc"></canvas>
+          </div>
+
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+    
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header>Cifrar con AES-OFB</nb-card-header>
+      <nb-card-body>
+
+        <div class="row">
+        
+          <div class="col-md-12">
+            
+            <form (ngSubmit)="cifrar('ofb')">
+              <div class="form-group col-md-6" style="padding: 0px;">
+                <label for="lenkey1_ofb" class="label">Tamaño Clave</label>
+                <nb-select [(ngModel)]="model1.lenkey1_ofb" fullWidth id="lenkey1_ofb" name="lenkey1_ofb" selected="256">
+                  <nb-option value="128">128</nb-option>
+                  <nb-option value="192">192</nb-option>
+                  <nb-option value="256">256</nb-option>
+                </nb-select>
+              </div>
+              
+              <div class="form-group">
+                <label for="clave1_ofb" class="label">Clave</label>
+                <input type="text" [(ngModel)]="model1.clave1_ofb" name="clave1_ofb" nbInput fullWidth id="clave1_ofb" placeholder="Inserte clave para cifrar">
+              </div>
+
+              <div class="form-group">
+                <label for="iv1_ofb" class="label">Vector Inicial</label>
+                <input type="text" [(ngModel)]="model1.iv1_ofb" name="iv1_ofb" nbInput fullWidth id="iv1_ofb" placeholder="Inserte texto para usar como vector inicial">
+              </div>
+
+              <div class="buttons">
+                
+                <label for="file-selector1_ofb" class="custom-file-upload">Cargar Imagen Clara</label>
+                <input #fileSelector1_ofb (change)="fileSelected($event, 'ofb1')" type="file" id="file-selector1_ofb">
+                
+                <button type="submit" nbButton status="primary">Cifrar</button>
+
+                <a #downloadAnchor1_ofb class="custom-file-upload" download="imagen-clara" href="" title="ImageName">Descargar Imagen</a>
+                
+                <button (click)="clearForm($event, 'ofb1')" nbButton  status="warning">Limpiar</button>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+        <div class="row" style="margin-top: 1rem;">
+
+          <div class="form-group col-md-12" style="display: flex; justify-content: center; margin: 0;">
+            <canvas #canvas1_ofb id="canvas1_ofb"></canvas>
+          </div>
+
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header>Descifrar con AES-OFB</nb-card-header>
+      <nb-card-body>
+
+        <div class="row">
+
+          <div class="col-md-12">
+            
+            <form (ngSubmit)="descifrar('ofb')">
+              <div class="form-group col-md-6" style="padding: 0px;">
+                <label for="lenkey2_ofb" class="label">Tamaño Clave</label>
+                <nb-select [(ngModel)]="model1.lenkey2_ofb" fullWidth id="lenkey2_ofb" name="lenkey2_ofb" selected="256">
+                  <nb-option value="128">128</nb-option>
+                  <nb-option value="192">192</nb-option>
+                  <nb-option value="256">256</nb-option>
+                </nb-select>
+              </div>
+
+              <div class="form-group">
+                <label for="clave2_ofb" class="label">Clave</label>
+                <input type="text" [(ngModel)]="model1.clave2_ofb" name="clave2_ofb" nbInput fullWidth id="clave2_ofb" placeholder="Inserte clave para descifrar">
+              </div>
+
+              <div class="form-group">
+                <label for="iv2_ofb" class="label">Vector Inicial</label>
+                <input type="text" [(ngModel)]="model1.iv2_ofb" name="iv2_ofb" nbInput fullWidth id="iv2_ofb" placeholder="Inserte texto para usar como vector inicial">
+              </div>
+
+              <div class="buttons">
+                
+                <label for="file-selector2_ofb" class="custom-file-upload">Cargar Imagen Cifrada</label>
+                <input #fileSelector2_ofb (change)="fileSelected($event, 'ofb2')" type="file" id="file-selector2_ofb">
+                
+                <button type="submit" nbButton status="primary">Descifrar</button>
+
+                <a #downloadAnchor2_ofb class="custom-file-upload" download="imagen-cifrada" href="" title="ImageName">Descargar Imagen</a>
+
+                <button (click)="clearForm($event, 'ofb2')" nbButton  status="warning">Limpiar</button>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+        <div class="row" style="margin-top: 1rem;">
+          
+          <div class="form-group col-md-12" style="display: flex; justify-content: center; margin: 0;">
+            <canvas #canvas2_ofb id="canvas2_ofb"></canvas>
+          </div>
+
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+    
+</div>
+
+
+
+
+<div class="row">
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header>Cifrar con AES-CFB</nb-card-header>
+      <nb-card-body>
+
+        <div class="row">
+        
+          <div class="col-md-12">
+            
+            <form (ngSubmit)="cifrar('cfb')">
+              <div class="form-group col-md-6" style="padding: 0px;">
+                <label for="lenkey1_cfb" class="label">Tamaño Clave</label>
+                <nb-select [(ngModel)]="model1.lenkey1_cfb" fullWidth id="lenkey1_cfb" name="lenkey1_cfb" selected="256">
+                  <nb-option value="128">128</nb-option>
+                  <nb-option value="192">192</nb-option>
+                  <nb-option value="256">256</nb-option>
+                </nb-select>
+              </div>
+              
+              <div class="form-group">
+                <label for="clave1_cfb" class="label">Clave</label>
+                <input type="text" [(ngModel)]="model1.clave1_cfb" name="clave1_cfb" nbInput fullWidth id="clave1_cfb" placeholder="Inserte clave para cifrar">
+              </div>
+
+              <div class="form-group">
+                <label for="iv1_cfb" class="label">Vector Inicial</label>
+                <input type="text" [(ngModel)]="model1.iv1_cfb" name="iv1_cfb" nbInput fullWidth id="iv1_cfb" placeholder="Inserte texto para usar como vector inicial">
+              </div>
+
+              <div class="buttons">
+                
+                <label for="file-selector1_cfb" class="custom-file-upload">Cargar Imagen Clara</label>
+                <input #fileSelector1_cfb (change)="fileSelected($event, 'cfb1')" type="file" id="file-selector1_cfb">
+                
+                <button type="submit" nbButton status="primary">Cifrar</button>
+
+                <a #downloadAnchor1_cfb class="custom-file-upload" download="imagen-clara" href="" title="ImageName">Descargar Imagen</a>
+                
+                <button (click)="clearForm($event, 'cfb1')" nbButton  status="warning">Limpiar</button>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+        <div class="row" style="margin-top: 1rem;">
+
+          <div class="form-group col-md-12" style="display: flex; justify-content: center; margin: 0;">
+            <canvas #canvas1_cfb id="canvas1_cfb"></canvas>
+          </div>
+
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header>Descifrar con AES-CFB</nb-card-header>
+      <nb-card-body>
+
+        <div class="row">
+
+          <div class="col-md-12">
+            
+            <form (ngSubmit)="descifrar('cfb')">
+              <div class="form-group col-md-6" style="padding: 0px;">
+                <label for="lenkey2_cfb" class="label">Tamaño Clave</label>
+                <nb-select [(ngModel)]="model1.lenkey2_cfb" fullWidth id="lenkey2_cfb" name="lenkey2_cfb" selected="256">
+                  <nb-option value="128">128</nb-option>
+                  <nb-option value="192">192</nb-option>
+                  <nb-option value="256">256</nb-option>
+                </nb-select>
+              </div>
+
+              <div class="form-group">
+                <label for="clave2_cfb" class="label">Clave</label>
+                <input type="text" [(ngModel)]="model1.clave2_cfb" name="clave2_cfb" nbInput fullWidth id="clave2_cfb" placeholder="Inserte clave para descifrar">
+              </div>
+
+              <div class="form-group">
+                <label for="iv2_cfb" class="label">Vector Inicial</label>
+                <input type="text" [(ngModel)]="model1.iv2_cfb" name="iv2_cfb" nbInput fullWidth id="iv2_cfb" placeholder="Inserte texto para usar como vector inicial">
+              </div>
+
+              <div class="buttons">
+                
+                <label for="file-selector2_cfb" class="custom-file-upload">Cargar Imagen Cifrada</label>
+                <input #fileSelector2_cfb (change)="fileSelected($event, 'cfb2')" type="file" id="file-selector2_cfb">
+                
+                <button type="submit" nbButton status="primary">Descifrar</button>
+
+                <a #downloadAnchor2_cfb class="custom-file-upload" download="imagen-cifrada" href="" title="ImageName">Descargar Imagen</a>
+
+                <button (click)="clearForm($event, 'cfb2')" nbButton  status="warning">Limpiar</button>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+        <div class="row" style="margin-top: 1rem;">
+          
+          <div class="form-group col-md-12" style="display: flex; justify-content: center; margin: 0;">
+            <canvas #canvas2_cfb id="canvas2_cfb"></canvas>
+          </div>
+
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+    
+</div>
+
+
+<div class="row">
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header>Cifrar con AES-CTR</nb-card-header>
+      <nb-card-body>
+
+        <div class="row">
+        
+          <div class="col-md-12">
+            
+            <form (ngSubmit)="cifrar('ctr')">
+              <div class="form-group col-md-6" style="padding: 0px;">
+                <label for="lenkey1_ctr" class="label">Tamaño Clave</label>
+                <nb-select [(ngModel)]="model1.lenkey1_ctr" fullWidth id="lenkey1_ctr" name="lenkey1_ctr" selected="256">
+                  <nb-option value="128">128</nb-option>
+                  <nb-option value="192">192</nb-option>
+                  <nb-option value="256">256</nb-option>
+                </nb-select>
+              </div>
+              
+              <div class="form-group">
+                <label for="clave1_ctr" class="label">Clave</label>
+                <input type="text" [(ngModel)]="model1.clave1_ctr" name="clave1_ctr" nbInput fullWidth id="clave1_ctr" placeholder="Inserte clave para cifrar">
+              </div>
+
+              <div class="form-group">
+                <label for="iv1_ctr" class="label">Vector Inicial</label>
+                <input type="text" [(ngModel)]="model1.iv1_ctr" name="iv1_ctr" nbInput fullWidth id="iv1_ctr" placeholder="Inserte texto para usar como vector inicial">
+              </div>
+
+              <div class="buttons">
+                
+                <label for="file-selector1_ctr" class="custom-file-upload">Cargar Imagen Clara</label>
+                <input #fileSelector1_ctr (change)="fileSelected($event, 'ctr1')" type="file" id="file-selector1_ctr">
+                
+                <button type="submit" nbButton status="primary">Cifrar</button>
+
+                <a #downloadAnchor1_ctr class="custom-file-upload" download="imagen-clara" href="" title="ImageName">Descargar Imagen</a>
+                
+                <button (click)="clearForm($event, 'ctr1')" nbButton  status="warning">Limpiar</button>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+        <div class="row" style="margin-top: 1rem;">
+
+          <div class="form-group col-md-12" style="display: flex; justify-content: center; margin: 0;">
+            <canvas #canvas1_ctr id="canvas1_ctr"></canvas>
+          </div>
+
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header>Descifrar con AES-CTR</nb-card-header>
+      <nb-card-body>
+
+        <div class="row">
+
+          <div class="col-md-12">
+            
+            <form (ngSubmit)="descifrar('ctr')">
+              <div class="form-group col-md-6" style="padding: 0px;">
+                <label for="lenkey2_ctr" class="label">Tamaño Clave</label>
+                <nb-select [(ngModel)]="model1.lenkey2_ctr" fullWidth id="lenkey2_ctr" name="lenkey2_ctr" selected="256">
+                  <nb-option value="128">128</nb-option>
+                  <nb-option value="192">192</nb-option>
+                  <nb-option value="256">256</nb-option>
+                </nb-select>
+              </div>
+
+              <div class="form-group">
+                <label for="clave2_ctr" class="label">Clave</label>
+                <input type="text" [(ngModel)]="model1.clave2_ctr" name="clave2_ctr" nbInput fullWidth id="clave2_ctr" placeholder="Inserte clave para descifrar">
+              </div>
+
+              <div class="form-group">
+                <label for="iv2_ctr" class="label">Vector Inicial</label>
+                <input type="text" [(ngModel)]="model1.iv2_ctr" name="iv2_ctr" nbInput fullWidth id="iv2_ctr" placeholder="Inserte texto para usar como vector inicial">
+              </div>
+
+              <div class="buttons">
+                
+                <label for="file-selector2_ctr" class="custom-file-upload">Cargar Imagen Cifrada</label>
+                <input #fileSelector2_ctr (change)="fileSelected($event, 'ctr2')" type="file" id="file-selector2_ctr">
+                
+                <button type="submit" nbButton status="primary">Descifrar</button>
+
+                <a #downloadAnchor2_ctr class="custom-file-upload" download="imagen-cifrada" href="" title="ImageName">Descargar Imagen</a>
+
+                <button (click)="clearForm($event, 'ctr2')" nbButton  status="warning">Limpiar</button>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+        <div class="row" style="margin-top: 1rem;">
+          
+          <div class="form-group col-md-12" style="display: flex; justify-content: center; margin: 0;">
+            <canvas #canvas2_ctr id="canvas2_ctr"></canvas>
+          </div>
+
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+    
+</div>
+  
+
+  

@@ -1,0 +1,36 @@
+  <div class="row">
+
+    <div class="col-md-6">
+      <ngx-cifrar-form 
+        [title]="'Cifrar con Desplazamiento'" 
+        [textoCifrado]="textoCifradoForm1" 
+        (cifrarEvent)="cifrar($event)"
+        (clearEvent)="clearForm(1)" >
+      </ngx-cifrar-form>
+    </div>
+    
+    <div class="col-md-6">
+      <ngx-descifrar-form 
+        [title]="'Descifrar con Desplazamiento'" 
+        [textoClaro]="textoClaroForm2" 
+        (descifrarEvent)="descifrar($event)"
+        (clearEvent)="clearForm(2)" >
+      </ngx-descifrar-form>  
+    </div>
+
+  </div>
+  
+  <div class="row">
+
+    <div class="col-md-12">
+      <ngx-analizar-form 
+        [title]="'Analizar con Desplazamiento'" 
+        [analisis]="analisis" 
+        (analizarEvent)="analizar($event)"
+        (clearEvent)="clearForm(3)" >
+      </ngx-analizar-form>  
+    </div>
+
+  </div>
+  
+  

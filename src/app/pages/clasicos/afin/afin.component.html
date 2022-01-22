@@ -1,0 +1,38 @@
+  <div class="row">
+
+    <div class="col-md-6">
+      <ngx-cifrar-form 
+        [title]="'Cifrar con Afín'" 
+        [textoCifrado]="textoCifradoForm1" 
+        [tipoClave]="tipoClave"
+        (cifrarEvent)="cifrar($event)"
+        (clearEvent)="clearForm(1)" >
+      </ngx-cifrar-form>
+    </div>
+    
+    <div class="col-md-6">
+      <ngx-descifrar-form 
+        [tipoClave]="tipoClave"
+        [title]="'Descifrar con Afín'" 
+        [textoClaro]="textoClaroForm2" 
+        (descifrarEvent)="descifrar($event)"
+        (clearEvent)="clearForm(2)" >
+      </ngx-descifrar-form>  
+    </div>
+
+  </div>
+  
+  <div class="row">
+
+    <div class="col-md-12">
+      <ngx-analizar-form 
+        [title]="'Analizar con Afín'" 
+        [analisis]="analisis" 
+        (analizarEvent)="analizar($event)"
+        (clearEvent)="clearForm(3)" >
+      </ngx-analizar-form>  
+    </div>
+
+  </div>
+  
+  
