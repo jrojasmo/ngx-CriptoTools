@@ -32,6 +32,7 @@ import { PermutacionComponent } from './permutacion/permutacion.component';
     NbInputModule,
     NbCardModule,
     ngFormsModule,
+    NbButtonModule,
     NbActionsModule,
     NbUserModule,
     NbCheckboxModule,

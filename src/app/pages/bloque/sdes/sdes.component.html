@@ -9,12 +9,12 @@
           <form (ngSubmit)="cifrar(model1.textoClaro, model1.claveString)">
       
             <div class="form-group">
-              <label for="textoClaro" class="label">Texto Claro</label>
+              <label for="textoClaro" class="label">Texto Claro (Binario de 8 dígitos)</label>
               <textarea type="text" [(ngModel)]="model1.textoClaro" name="textoClaro" nbInput fullWidth id="textoClaro" placeholder="Inserte el texto a cifrar"></textarea>
             </div>
       
             <div class="form-group">
-              <label for="clave3" class="label">Clave de cifrado</label>
+              <label for="clave3" class="label">Clave de cifrado (Binario de 10 dígitos)</label>
               <textarea type="text" [(ngModel)]="model1.claveString" name="claveString" nbInput fullWidth id="claveString" placeholder="Ingrese un número binario de 10 dígitos"></textarea>
             </div>
       
@@ -43,12 +43,12 @@
           <form (ngSubmit)="descifrar(model2.textoCifrado, model2.claveString)">
 
             <div class="form-group">
-              <label for="textoCifrado" class="label">Texto Cifrado</label>
+              <label for="textoCifrado" class="label">Texto Cifrado (Binario de 8 dígitos)</label>
               <textarea type="text" [(ngModel)]="model2.textoCifrado" name="textoCifrado" nbInput fullWidth id="textoCifrado" placeholder="Oprima 'DESCIFRAR' para ver el texto descifrado"></textarea>
             </div>
       
             <div class="form-group">
-              <label for="clave3" class="label">Clave de cifrado</label>
+              <label for="clave3" class="label">Clave de cifrado (Binario de 10 dígitos)</label>
               <textarea type="text" [(ngModel)]="model2.claveString" name="claveString" nbInput fullWidth id="claveString" placeholder="Ingrese un número binario de 10 dígitos"></textarea>
             </div>
       

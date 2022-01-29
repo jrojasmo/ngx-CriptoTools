@@ -39,6 +39,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ]
   },
   {
+    title: 'Gamma Pentagonal',
+    icon: 'keypad-outline',
+    link: '/pages/gamma',
+  },
+  {
     title: 'Criptosistemas de Bloque',
     icon: 'unlock-outline',
     link: '/pages/bloque',
@@ -63,11 +68,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ]
   },
   {
-    title: 'Gamma Pentagonal',
-    icon: 'keypad-outline',
-    link: '/pages/gamma',
-  },
-  {
     title: 'Llave Pública',
     icon: 'unlock-outline',
     link: '/pages/bloque',
@@ -76,7 +76,18 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'RSA',
         link: '/pages/publica/rsa',
       },
-      
+      {
+        title: 'Rabin',
+        link: '/pages/publica/rabin',
+      },
+      {
+        title: 'ElGamal (M-V)',
+        link: '/pages/publica/elgamal',
+      },
+      {
+        title: 'Firma Digital (DSS)',
+        link: '/pages/publica/firma',
+      }
     ]
   },
 ];

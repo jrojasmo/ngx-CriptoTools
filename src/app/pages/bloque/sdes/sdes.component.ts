@@ -32,7 +32,7 @@ export class SDesComponent {
 
   cifrar(textoClaro, clave) {
     //textoClaro = this.util.normalizeInput(textoClaro);
-    var re2 = /[0-1]*/g;
+    var re2 = /[0-1]{8}/g;
     if (!this.matchExact(textoClaro, re2)) {
       this.showTextoIncorrecto();
       return;
@@ -48,7 +48,7 @@ export class SDesComponent {
   }
 
   descifrar(textoCifrado, clave) {
-    var re2 = /[0-1]*/g;
+    var re2 = /[0-1]{8}/g;
     if (!this.matchExact(textoCifrado, re2)) {
       this.showTextoIncorrecto();
       return;
@@ -93,7 +93,7 @@ export class SDesComponent {
     this.dialogService.open(DialogoComponent, {
       context: {
         title: 'Texto Incorrecto',
-        content: 'El texto debe ser un número binario'
+        content: 'El texto debe ser un número binario de 8 dígitos'
       },
     });
   }
